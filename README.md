@@ -11,3 +11,6 @@ Audio: Not planned? Should we imbed audio somehow? I don't think audio needs to 
 Slideshow: Instead of rel= use HTML5 data attribute. Normal lightboxing[$tag] used for relations for galleries.
 
 More notes to come, here's a starting point 
+
+Next point! Use alt tag to display the text below. Also use this text as another link with target="_blank" for direct linking to individual pictures.
+
