@@ -4,6 +4,14 @@ But! The goal is to integrate Video for Everyone (http://camendesign.com/code/vi
 
 Images: Limited to the available viewport, could be an easy to modify flag (FALSE will allow full img source size)
 
+for placeholder images I'm thinking of using lorempixel.com
+
+usage is as such: 
+<a> or <img> src or href is set tohttp://lorempixel.com/{width}/{height}/{category}/
+	example: http://lorempixel.com/400/200/technics/
+category can be omitted for a random image
+
+
 Videos: Video for Everyone
 
 Audio: Not planned? Should we imbed audio somehow? I don't think audio needs to be that focused on the page. Thoughts Dylan?
