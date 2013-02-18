@@ -6,7 +6,9 @@
 
 $(document).ready(function(){
   $('a[data-boxing="true"]').click(function(e){
+		e.preventDefault();
 		var imgUrl = $(this).attr('href');
+		
 		$overlay = $('<div id="xyzoverlay"></div>');
 		$overlay
 			.hide()
@@ -14,18 +16,12 @@ $(document).ready(function(){
 			.fadeIn('900');
 
 		$('<div id="xyzframe"/>').appendTo('#xyzoverlay');
-		//.ready(centerImage());
 
 		$('<img class="xyzimg">').attr('src', imgUrl)
-			.load(imgUrl, function(){
-				var height = window.innerHeight;
-				var width = window.innerWidth;
-				var imgHeight = this.height;
-				var imgWidth = this.width;
-				console.log(height, width, imgHeight, imgWidth, imgUrl);
+			.load(function(){
 				$('#xyzframe').css({
-					'top' : ((height / 2) - (imgHeight / 2)),
-					'left' : ((width / 2) - (imgWidth /2))
+					'top' : ((window.innerHeight / 2) - (this.height / 2)),
+					'left' : ((window.innerWidth / 2) - (this.width /2))
 				});
 
 
@@ -35,9 +31,6 @@ $(document).ready(function(){
 		$overlay.click(function(e){
 			removeBoxing();
 		});
-
-
-    return false;
   });
 
 });
@@ -47,10 +40,4 @@ function removeBoxing(){
 		.fadeOut('700', function(){
 			$(this).remove();
 	});
-}
-
-function centerImage(){
-	var height = window.innerHeight;
-	var width = document.innerWidth;
-	$('')
 }
