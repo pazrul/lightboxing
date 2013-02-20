@@ -15,7 +15,7 @@ $(document).ready(function(){
 			.appendTo('body')
 			.fadeIn('900');
 
-		$('<div id="xyzframe"/>').appendTo('#xyzoverlay');
+		$('<div id="xyzframe"/>').appendTo('#xyzoverlay').hide();
 
 		$('<img class="xyzimg">').attr('src', imgUrl)
 			.load(function(){
