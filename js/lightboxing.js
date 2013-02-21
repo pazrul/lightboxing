@@ -15,14 +15,17 @@ $(document).ready(function(){
 			.appendTo('body')
 			.fadeIn('900');
 
-		$('<div id="xyzframe"/>').appendTo('#xyzoverlay').hide();
+		$('<div id="xyzframe"/>').appendTo('#xyzoverlay').css({
+			'top': (window.innerHeight / 2),
+			'left': (window.innerWidth / 2)
+		});
 
 		$('<img class="xyzimg">').attr('src', imgUrl)
-			.load(function(){
-				$('#xyzframe').css({
+			.ready(function(){
+				$('#xyzframe').animate({
 					'top' : ((window.innerHeight / 2) - (this.height / 2)),
 					'left' : ((window.innerWidth / 2) - (this.width /2))
-				});
+				}, 2000);
 
 
 			})
