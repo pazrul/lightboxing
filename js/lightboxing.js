@@ -11,7 +11,7 @@ function removeBoxing(){
 	});
 }
 
-//Need an animate and center funciton. I don't want to do it how it is now
+//Need an animate and center funciton. I don't want to do it how it is now. (and it doesn't work as is)
 
 
 
@@ -37,11 +37,14 @@ $(document).ready(function(){
 		});
 
 		//Actual image load. Doesn't animate properly and it needs to be fixed.
-		$('<img class="xyzimg">').attr('src', imgUrl)
+		LBimage = $('<img class="xyzimg">');
+		LBimage.attr('src', imgUrl)
 			.ready(function(){
 				$('#xyzframe').animate({
-					'top' : ((window.innerHeight / 2) - (this.height / 2)),
-					'left' : ((window.innerWidth / 2) - (this.width /2))
+					'top' : ((window.innerHeight / 2) - (LBimage.height / 2)) + 'px',
+					'left' : ((window.innerWidth / 2) - (LBimage.width /2)) + 'px',
+					'width' : ($(LBimage).width()),
+					'height' : ($(LBimage).height())
 				}, 2000);
 
 

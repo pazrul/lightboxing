@@ -10,4 +10,6 @@
   border: 25px solid white;
   position: absolute;
   background-color: #fff;
-  border-radius: 20px; }
+  border-radius: 20px;
+  width: 40px;
+  height: 40px; }
