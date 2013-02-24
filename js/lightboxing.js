@@ -27,7 +27,7 @@ $(document).ready(function(){
 		var imgUrl = $(this).attr('href');
 		
 		//start overlay creation. This can be cleaned up to have all of it in one declaration
-		var overlay = $('<div id="xyzoverlay"></div>');
+		var overlay = $('<div id="xyzoverlay"/>');
 		overlay
 			.hide()
 			.appendTo('body')
@@ -39,26 +39,26 @@ $(document).ready(function(){
 			'left': (window.innerWidth / 2)
 		}).ready(function(){
 			var LBimage = $('<img class="xyzimg">');
-		LBimage.attr('src', imgUrl).css({'z-index' : -1 })
-			.load(function(){
-				$('#xyzframe').animate({
-					'top' : ((window.innerHeight / 2) - (LBimage.height() / 2)),
-					'left' : ((window.innerWidth / 2) - (LBimage.width() /2)),
-					'width' : ($(LBimage).width()),
-					'height' : ($(LBimage).height())
+
+			//Actual image load. Doesn't animate properly and it needs to be fixed.
+			LBimage.attr('src', imgUrl).css({'opacity' : 0.0 })
+				.load(function(){
+					var top = ((window.innerHeight / 2) - (LBimage.height() / 2));
+					var left = ((window.innerWidth / 2) - (LBimage.width() /2));
+
+					$('#xyzframe').animate({
+						'top' : top,
+						'left' : left,
+						'width' : ($(LBimage).width()),
+						'height' : ($(LBimage).height())
 					
-				}, 2000).animate({
-					'z-index' : 4
-				})
-
-
-			})
-			.appendTo('#xyzframe');
+					}, 2000, function(){
+						$('#xyzframe > img').animate({'opacity' : 1.0}, 200).click(function(event){event.stopPropagation;});
+					})
+				}).appendTo('#xyzframe');
 		});
 
-		//Actual image load. Doesn't animate properly and it needs to be fixed.
-		
-		
+				
 		/*Need to change this to stop event propagation. 
 		If someone clicks on the image it currently removes the image and overlay.
 		Also want to add 'esc' key to leave.
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		});
 
 		//should remove lightbox on esc. It doesn't.
-		$('#overlay').keyup(function(e) {
+		$(document).keyup(function(e) {
 			if (e.keyCode == KEY_ESC) {removeBoxing();}
 		});
   });
