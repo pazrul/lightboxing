@@ -53,7 +53,7 @@ $(document).ready(function(){
 						'height' : ($(LBimage).height())
 					
 					}, 2000, function(){
-						$('#xyzframe > img').animate({'opacity' : 1.0}, 200).click(function(event){event.stopPropagation;});
+						$('#xyzframe > img').animate({'opacity' : 1.0}, 200).click(function(event){event.stopPropagation();});
 					})
 				}).appendTo('#xyzframe');
 		});
