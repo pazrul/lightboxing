@@ -52,23 +52,17 @@ $(document).ready(function(){
 						'width' : ($(LBimage).width()),
 						'height' : ($(LBimage).height())
 					
-					}, 2000, function(){
+					}, 1600, function(){ //Stop event bubbling
 						$('#xyzframe > img').animate({'opacity' : 1.0}, 200).click(function(event){event.stopPropagation();});
 					})
 				}).appendTo('#xyzframe');
 		});
-
-				
-		/*Need to change this to stop event propagation. 
-		If someone clicks on the image it currently removes the image and overlay.
-		Also want to add 'esc' key to leave.
-		*/
 		
 		overlay.click(function(e){
 			removeBoxing();
 		});
 
-		//should remove lightbox on esc. It doesn't.
+		//removes lightbox on ESC key.
 		$(document).keyup(function(e) {
 			if (e.keyCode == KEY_ESC) {removeBoxing();}
 		});
